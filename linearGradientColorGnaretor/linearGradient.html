@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        body{
+        background:linear-gradient(86deg, #ff052b, #dffb09);
+        text-align: center;
+        font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+        color: white;
+        }
+
+       
+    
+        #cat{
+            margin: 10px;
+            outline: none;
+            height: 30px;
+            width: 10%;
+            font-size: 1rem;
+        }
+        #range{
+            -webkit-appearance: none;
+            height: 15px;
+            width: 15%;
+            background: rgb(255, 252, 252);
+            border-radius: 50px;
+            outline: none;
+        }
+        #range::-webkit-slider-thumb{
+            -webkit-appearance: none;
+            height: 25px;
+            width: 25px;
+            background: #ff052b;
+            border-radius: 50px;
+            outline: none;
+        }
+        #color1, #color2{
+            margin: 10px;
+            height: 30px;
+            width: 100px;
+        }
+
+        h4{
+            background: black;
+            padding: 5px;
+           display: inline-block;
+           margin: 20px;
+        }
+
+
+       
+    </style>
+</head>
+<body id="bg">
+    <div class="main">
+        <input type="color" id="color1" value="#17eeb8">
+        <input type="color" id="color2" value="#e01f1f">
+        <input type="range" id="range" min="0" max="360">
+       <select name="" id="cat">
+           <option value="to left">left</option>
+           <option value="to right">right</option>
+           <option value="to top">top</option>
+           <option value="to bottom">bottom</option>
+           <option value="to top left">top-left</option>
+           <option value="to bottom left">bottom-left</option>
+           <option value="to top right">top-right</option>
+           <option value="to bottom right">bottom-right</option>
+           
+       </select>
+        <h4 id="code"></h4>
+    </div>
+    <script>
+
+        const color1 = document.getElementById("color1");
+        const color2 = document.getElementById("color2");
+        const range = document.getElementById("range");
+        const code = document.getElementById("code");
+        const bg = document.getElementById("bg");
+        const cat = document.getElementById("cat");
+
+        function set(){
+           bg.style.background = `linear-gradient(${range.value}deg, ${color1.value}, ${color2.value})`;
+           code.textContent = `linear-gradient(${range.value}deg, ${color1.value}, ${color2.value})`;
+        }
+
+        color1.addEventListener('input', set);
+        color2.addEventListener('input', set);
+        range.addEventListener('input', set);
+
+        function set2(){
+           bg.style.background = `linear-gradient(${cat.value}, ${color1.value}, ${color2.value})`;
+           code.textContent = `linear-gradient(${cat.value}, ${color1.value}, ${color2.value})`;
+        }
+
+        color1.addEventListener('input', set2);
+        color2.addEventListener('input', set2);
+        cat.addEventListener('input', set2);
+
+    </script>
+</body>
+</html>
